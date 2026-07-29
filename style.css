@@ -63,7 +63,7 @@ section{padding:80px 0;border-top:1px solid var(--line-2)}
 
 .two{display:grid;grid-template-columns:1fr 1fr;gap:36px}
 .who{border-top:2px solid var(--ink);padding-top:20px}
-.who .nm{font:400 22px/1.2 var(--serif)}
+.who .nm{font:400 22px/1.2 var(--serif);margin-bottom:12px}
 .who .rl{font:600 10.5px/1 var(--mono);letter-spacing:.15em;text-transform:uppercase;color:var(--ox);margin:10px 0 12px}
 .who p{font-size:14px;color:var(--ink-3);line-height:1.6}
 
@@ -99,7 +99,7 @@ footer{border-top:1px solid var(--line-2);padding:36px 0 48px}
 .ph{color:var(--ink-4);font-style:italic}
 .bios{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:8px}
 .bio{border-top:2px solid var(--ink);padding-top:20px}
-.bio .nm{font:400 24px/1.2 var(--serif)}
+.bio .nm{font:400 24px/1.2 var(--serif);margin-bottom:14px}
 .bio .rl{font:600 10.5px/1 var(--mono);letter-spacing:.15em;text-transform:uppercase;color:var(--ox);margin:11px 0 14px}
 .bio p{font-size:14.5px;color:var(--ink-3);line-height:1.65}
 .bio .meta{margin-top:16px;font:400 13px/1.6 var(--sans);color:var(--ink-4)}
