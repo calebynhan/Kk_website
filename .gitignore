@@ -4,3 +4,6 @@
 # compressed Freight/freight-bg.mp4 — keep the masters out of the repo and out
 # of the published site.
 Freight/freightBackground*.mp4
+
+# Designer source archives; the composed SVGs are the deliverable.
+logo*.zip
