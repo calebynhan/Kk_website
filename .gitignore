@@ -1,0 +1,6 @@
+.DS_Store
+
+# Full-resolution source clip (44 MB). The deployed background is the
+# compressed Freight/freight-bg.mp4 — keep the source out of the repo
+# and out of the published site.
+Freight/freightBackgroundSource.mp4

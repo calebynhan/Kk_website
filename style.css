@@ -68,6 +68,47 @@ body>nav{position:sticky;top:0;z-index:var(--z-sticky);background:rgba(255,255,2
   .hero-side{padding-bottom:6px}
 }
 
+/* ---------- video hero (freight) ---------- */
+.hero-v{position:relative;isolation:isolate;overflow:hidden;
+  min-height:clamp(460px,78vh,760px);display:flex;align-items:center;
+  padding:clamp(56px,7vw,96px) 0;background:var(--dark)}
+.hero-v video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  z-index:-2;pointer-events:none}
+/* legibility scrim: darkest at the left, where the type sits */
+.hero-v::after{content:"";position:absolute;inset:0;z-index:-1;
+  background:
+    linear-gradient(100deg,rgba(9,11,15,.78) 0%,rgba(9,11,15,.62) 42%,rgba(9,11,15,.34) 74%,rgba(9,11,15,.26) 100%),
+    linear-gradient(to bottom,rgba(9,11,15,.45) 0%,rgba(9,11,15,0) 26%)}
+/* .wrap is a flex item here; without this it shrinks to its content and the
+   auto margins centre it, pulling the type off the page's left gutter. */
+.hero-v>.wrap{width:100%}
+.hero-v h1{color:#fff;max-width:20ch}
+.hero-v .lede{color:#dfe3e8;max-width:44ch;margin-top:20px}
+.hero-v .hero-btns{margin-top:32px}
+.hero-v .btn-g{border-color:rgba(255,255,255,.62);color:#fff}
+.hero-v .btn-g:hover{border-color:#fff;background:rgba(255,255,255,.14)}
+/* keeps the dark fill (site convention) but stops the edge dissolving into the video */
+.hero-v .btn-p{box-shadow:inset 0 0 0 1px rgba(255,255,255,.22)}
+.hero-v .btn-p:hover{background:#2b3139}
+
+/* play/pause */
+.vtoggle{position:absolute;right:var(--gutter);bottom:clamp(18px,3vw,28px);z-index:2;
+  width:42px;height:42px;display:grid;place-items:center;cursor:pointer;
+  color:#fff;background:rgba(9,11,15,.42);border:1px solid rgba(255,255,255,.34);
+  border-radius:50%;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  transition:background .18s cubic-bezier(.22,1,.36,1),border-color .18s,transform .18s}
+.vtoggle:hover{background:rgba(9,11,15,.66);border-color:rgba(255,255,255,.7)}
+.vtoggle:active{transform:scale(.94)}
+.vtoggle svg{width:14px;height:14px;fill:currentColor;display:block}
+/* optical centring: the play triangle reads left-heavy inside a circle */
+.vtoggle .i-play{display:none;margin-left:2px}
+.vtoggle[data-paused="true"] .i-play{display:block}
+.vtoggle[data-paused="true"] .i-pause{display:none}
+
+/* two equal columns using the light .hero-side treatment */
+.pair{display:grid;gap:32px}
+@media(min-width:760px){.pair{grid-template-columns:1fr 1fr;gap:clamp(36px,5vw,64px)}}
+
 /* ---------- sections ---------- */
 section{padding:clamp(56px,6.5vw,88px) 0;border-top:1px solid var(--line-2)}
 .head{max-width:46ch;margin-bottom:clamp(32px,4vw,48px)}
