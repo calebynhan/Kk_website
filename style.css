@@ -186,8 +186,16 @@ section:has(.stages){padding-bottom:24px}
 .person p{font-size:15px;line-height:1.55;color:var(--body)}
 .nm{font:400 24px/1.2 var(--serif);margin:16px 0 6px}
 
-/* diagonal-stripe portrait placeholder (inline <svg>) */
-.portrait{display:block;width:100%;height:180px;
+/* Portraits. The handoff sized these as a wide band (180/240px tall, full column
+   width) because a diagonal-stripe placeholder reads fine at any aspect. A real
+   headshot does not — at ~536x240 on About the crop is a horizontal strip across
+   the eyes. Now a 4:5 editorial portrait, which suits both a photograph and the
+   remaining placeholder, and keeps the two founders the same shape.
+   Display widths are capped by the source: the supplied photo carried a baked-in
+   white letterbox, leaving only 460x432 of real image, so the 4:5 crop is 346px
+   wide. 200/220px display keeps it above 1.5x density rather than upscaling. */
+.portrait{display:block;width:100%;max-width:200px;aspect-ratio:4/5;height:auto;
+  object-fit:cover;object-position:center 22%;
   background:var(--fill);border:1px solid var(--rule-2)}
 
 /* ---------- home: practice hub ----------
@@ -228,7 +236,8 @@ section:has(.stages){padding-bottom:24px}
 .intro-body p{font-size:17px;line-height:1.65;color:var(--body)}
 
 .founders{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px;padding:60px 0}
-.founder .portrait{height:240px}
+/* the 4:5 frame carries the height now; About just gets a slightly larger portrait */
+.founder .portrait{max-width:220px}
 .founder h2{font-size:32px;line-height:1.15;letter-spacing:-.015em;margin:20px 0 12px}
 .founder p{font-size:16px;line-height:1.6;color:var(--body)}
 .founder p+p{margin-top:10px}
