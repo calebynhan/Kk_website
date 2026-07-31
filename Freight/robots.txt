@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://freight.kkqconsulting.com/sitemap.xml
