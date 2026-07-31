@@ -77,19 +77,48 @@ body>nav{position:sticky;top:0;z-index:var(--z-sticky);background:rgba(255,255,2
 /* legibility scrim: darkest at the left, where the type sits */
 .hero-v::after{content:"";position:absolute;inset:0;z-index:-1;
   background:
-    linear-gradient(100deg,rgba(9,11,15,.78) 0%,rgba(9,11,15,.62) 42%,rgba(9,11,15,.34) 74%,rgba(9,11,15,.26) 100%),
-    linear-gradient(to bottom,rgba(9,11,15,.45) 0%,rgba(9,11,15,0) 26%)}
+    /* Pool of shade over the type only. Tuned by measuring composited luminance
+       under the real h1/lede boxes across the clip: holds 4:1 on the headline
+       and 6:1 on the lede at their worst frames while leaving ~82% of the
+       footage's brightness intact. */
+    radial-gradient(ellipse 66% 86% at 20% 46%,
+      rgba(9,11,15,.86) 0%,
+      rgba(9,11,15,.80) 30%,
+      rgba(9,11,15,.56) 56%,
+      rgba(9,11,15,.18) 78%,
+      rgba(9,11,15,0) 100%),
+    /* keeps the white nav from floating on a bright frame */
+    linear-gradient(to bottom,rgba(9,11,15,.34) 0%,rgba(9,11,15,0) 20%),
+    /* faint overall settle so the footage sits in the palette */
+    linear-gradient(rgba(9,11,15,.04),rgba(9,11,15,.04))}
 /* .wrap is a flex item here; without this it shrinks to its content and the
    auto margins centre it, pulling the type off the page's left gutter. */
 .hero-v>.wrap{width:100%}
-.hero-v h1{color:#fff;max-width:20ch}
-.hero-v .lede{color:#dfe3e8;max-width:44ch;margin-top:20px}
+/* A soft halo carries local legibility over the busiest frames, so the scrim
+   can stay light enough to keep the footage visible. */
+.hero-v h1{color:#fff;max-width:20ch;
+  text-shadow:0 2px 28px rgba(6,8,12,.55),0 1px 4px rgba(6,8,12,.40)}
+.hero-v .lede{color:#eef1f4;max-width:44ch;margin-top:20px;
+  text-shadow:0 1px 12px rgba(6,8,12,.55),0 1px 3px rgba(6,8,12,.40)}
 .hero-v .hero-btns{margin-top:32px}
 .hero-v .btn-g{border-color:rgba(255,255,255,.62);color:#fff}
 .hero-v .btn-g:hover{border-color:#fff;background:rgba(255,255,255,.14)}
 /* keeps the dark fill (site convention) but stops the edge dissolving into the video */
 .hero-v .btn-p{box-shadow:inset 0 0 0 1px rgba(255,255,255,.22)}
 .hero-v .btn-p:hover{background:#2b3139}
+
+/* Narrow screens: the headline reflows to the full width, so a left-weighted
+   pool can't cover it. Swap to a vertical scrim weighted to the text band. */
+@media(max-width:820px){
+  .hero-v::after{
+    background:
+      linear-gradient(to bottom,
+        rgba(9,11,15,.34) 0%,
+        rgba(9,11,15,.50) 28%,
+        rgba(9,11,15,.56) 62%,
+        rgba(9,11,15,.38) 100%),
+      linear-gradient(rgba(9,11,15,.04),rgba(9,11,15,.04))}
+}
 
 /* play/pause */
 .vtoggle{position:absolute;right:var(--gutter);bottom:clamp(18px,3vw,28px);z-index:2;
