@@ -90,11 +90,8 @@ body>nav{position:sticky;top:0;z-index:var(--z-sticky);
 }
 .nav-in{max-width:var(--max);margin:0 auto;padding:0 var(--gutter);height:var(--nav-h);
   display:flex;align-items:center}
-.brand{display:inline-flex;align-items:center;gap:10px;flex-shrink:0;
+.brand{display:inline-flex;align-items:baseline;gap:10px;flex-shrink:0;
   font:400 25px/1 var(--serif);letter-spacing:-.015em}
-/* stacked lockup: CONSULTING is ~28% of the height, so it needs ~34px total
-   before that line becomes legible */
-.brand img{display:block;height:34px;width:auto}
 .est{font:400 10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 .nav-links{display:flex;align-items:center;gap:34px;margin-left:auto;font-size:14px}
 .nav-links a{padding-bottom:2px;border-bottom:1px solid transparent;
@@ -298,7 +295,6 @@ footer{border-top:1px solid var(--ink)}
 .f-top{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,1fr));gap:56px;
   padding-top:48px;padding-bottom:32px}
 .f-about .brand{font-size:24px;line-height:1.2}
-.f-about .brand img{height:38px}
 .f-about p{font-size:15px;line-height:1.6;color:var(--body);max-width:26em;margin-top:14px}
 .f-loc{font:400 11px/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;
   color:var(--muted);margin-top:18px}
@@ -369,7 +365,6 @@ footer{border-top:1px solid var(--ink)}
      first, then the wordmark steps down, so the CTA never has to shrink to unreadable. */
   .est{display:none}
   .brand{font-size:20px}
-  .brand img{height:26px}
   .nav-cta{margin-left:12px}
   .nav-cta .btn{padding:9px 12px;font-size:12.5px;gap:6px}
 }
