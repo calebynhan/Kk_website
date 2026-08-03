@@ -260,6 +260,9 @@ form{max-width:560px}
 .field textarea{min-height:120px;resize:vertical}
 .hint{font-size:13px;line-height:1.6;color:var(--ink-4)}
 .contact-grid{display:grid;grid-template-columns:1fr;gap:40px;align-items:start}
+/* each column is one grid item: heading + its content. Without the wrapper the
+   headings become items of their own and push the form into the narrow track. */
+.contact-col h2{font-size:clamp(19px,1.8vw,23px);margin-bottom:22px}
 @media(min-width:880px){
   .contact-grid{grid-template-columns:minmax(0,560px) minmax(0,21rem);
     justify-content:space-between;gap:clamp(48px,7vw,88px)}
