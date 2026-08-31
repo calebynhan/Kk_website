@@ -25,11 +25,11 @@ ul,ol{list-style:none}
 .skip:focus{left:var(--gutter);top:10px;background:var(--ink);color:#fff;
   padding:10px 16px;border-radius:2px;font:600 14px/1 var(--sans)}
 
-h1{font:400 clamp(36px,4.8vw,76px)/1.06 var(--serif);letter-spacing:-.02em;text-wrap:balance}
-h2{font:400 clamp(27px,3.1vw,46px)/1.14 var(--serif);letter-spacing:-.015em;text-wrap:balance}
+h1{font:400 clamp(36px,4.6vw,62px)/1.07 var(--serif);letter-spacing:-.02em;text-wrap:balance}
+h2{font:400 clamp(27px,3vw,39px)/1.16 var(--serif);letter-spacing:-.015em;text-wrap:balance}
 h3{text-wrap:balance}
 p{text-wrap:pretty}
-.lede{font:400 clamp(17px,1.35vw,21px)/1.55 var(--sans);color:var(--ink-2)}
+.lede{font:400 clamp(17px,1.5vw,19px)/1.55 var(--sans);color:var(--ink-2)}
 
 /* ---------- nav ---------- */
 body>nav{position:sticky;top:0;z-index:var(--z-sticky);background:rgba(255,255,255,.93);
@@ -57,8 +57,8 @@ body>nav{position:sticky;top:0;z-index:var(--z-sticky);background:rgba(255,255,2
 /* ---------- hero ---------- */
 .hero{padding:clamp(64px,8vw,108px) 0 clamp(56px,6vw,80px)}
 .hero-in{display:grid;gap:clamp(36px,5vw,56px)}
-.hero h1{max-width:17ch}
-.hero .lede{max-width:52ch;margin-top:24px}
+.hero h1{max-width:16ch}
+.hero .lede{max-width:46ch;margin-top:22px}
 .hero-btns{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
 .hero-side{border-top:1px solid var(--line);padding-top:20px;max-width:44ch}
 .hero-side h2,.hero-side h3{font:600 13px/1.4 var(--sans);letter-spacing:0;color:var(--ink);margin-bottom:11px}
@@ -151,7 +151,7 @@ body>nav{position:sticky;top:0;z-index:var(--z-sticky);background:rgba(255,255,2
 
 /* ---------- sections ---------- */
 section{padding:clamp(56px,6.5vw,88px) 0;border-top:1px solid var(--line-2)}
-.head{max-width:52ch;margin-bottom:clamp(32px,4vw,48px)}
+.head{max-width:46ch;margin-bottom:clamp(32px,4vw,48px)}
 .head .lede{margin-top:16px;max-width:52ch}
 
 /* engagement — a real ordered sequence, not section scaffolding */
@@ -162,7 +162,7 @@ section{padding:clamp(56px,6.5vw,88px) 0;border-top:1px solid var(--line-2)}
 .st h3{font:400 clamp(21px,2vw,25px)/1.26 var(--serif);letter-spacing:-.012em}
 .st p{font-size:15px;line-height:1.65;color:var(--ink-3);max-width:62ch}
 @media(min-width:820px){
-  .st{grid-template-columns:3.5rem minmax(0,17rem) minmax(0,1fr);gap:clamp(24px,3vw,44px)}
+  .st{grid-template-columns:3.5rem minmax(0,19.5rem) minmax(0,1fr);gap:clamp(24px,3vw,44px)}
 }
 
 /* ---------- where we stop ---------- */
@@ -300,13 +300,6 @@ body:has(.hero-v video) .vtoggle{backdrop-filter:none;-webkit-backdrop-filter:no
   background:rgba(9,11,15,.55)}
 body:has(.hero-v video) .vtoggle:hover{background:rgba(9,11,15,.72)}
 
-/* Large screens: the canvas opens up, so body copy scales with it rather than
-   leaving the page feeling thin inside a wide container. */
-@media(min-width:1500px){
-  body{font-size:17px}
-  .st p,.hero-side p{font-size:16px}
-  .block p{font-size:17px}
-}
 
 /* Three practices on the homepage hub: stack until there is room for all three
    side by side, so the last card never orphans onto a row of its own. */
@@ -314,4 +307,82 @@ body:has(.hero-v video) .vtoggle:hover{background:rgba(9,11,15,.72)}
 #practices .hero-side{max-width:none}
 @media(min-width:900px){
   #practices .pair{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+
+/* =========================================================================
+   Craft pass. The page was one flat white sheet with five identically shaped
+   sections, an accent colour that appeared nowhere, and no interaction life.
+   Everything below works within the existing palette and type — no new colours,
+   no new families.
+   ========================================================================= */
+
+/* --- ground rhythm -------------------------------------------------------
+   Alternating ground gives the page a spine. The practices sit on the panel
+   so the three offers read as one unit rather than three floating columns. */
+#practices{background:var(--panel);border-top-color:var(--line)}
+#practices+section{border-top:none}
+
+/* --- section pacing ------------------------------------------------------
+   Uniform padding everywhere is what made this feel mechanical. The sequence
+   and the people section carry more air than the denser practice grid. */
+#how,#who{padding:clamp(72px,8vw,124px) 0}
+
+/* --- the ordered sequence ------------------------------------------------
+   The ordinals were 12px mono in a colour nobody could see. Setting them in
+   the serif at display size makes the list read as a numbered sequence at a
+   glance, and gives the accent somewhere real to live. */
+.st .n{font:400 clamp(19px,1.7vw,23px)/1.2 var(--serif);letter-spacing:0;
+  color:var(--ox);font-variant-numeric:tabular-nums lining-nums;
+  transition:opacity .2s cubic-bezier(.22,1,.36,1)}
+.st{transition:background-color .2s cubic-bezier(.22,1,.36,1)}
+@media(min-width:820px){
+  /* hang the rule and the ordinal into the gutter so the list has an edge */
+  .st{margin-inline:calc(var(--gutter) * -0.5);padding-inline:calc(var(--gutter) * 0.5)}
+  .st:hover{background-color:rgba(122,46,40,.035)}
+}
+.steps{border-top-width:2px;border-top-color:var(--ink)}
+
+/* --- practice cards ------------------------------------------------------
+   The whole card is the target, not just the heading — a 3-word link inside a
+   paragraph-sized card is a small tap target and a weak affordance. */
+#practices .hero-side{position:relative;
+  transition:border-top-color .2s cubic-bezier(.22,1,.36,1)}
+#practices .hero-side h3 a::after{content:"";position:absolute;inset:0}
+#practices .hero-side:hover{border-top-color:var(--ox)}
+#practices .hero-side:hover h3 a{text-decoration:underline;text-underline-offset:4px;
+  text-decoration-thickness:1px}
+#practices .hero-side:has(a:focus-visible){border-top-color:var(--ox)}
+
+/* --- typographic detail --------------------------------------------------- */
+::selection{background:var(--ox);color:#fff}
+.st .n,.f-bot,.direct dd{font-variant-numeric:tabular-nums}
+/* inline prose links: underline that sits off the baseline rather than through it */
+.block a:not(.btn),.page-head a:not(.btn),.bio .meta a{
+  text-decoration:underline;text-underline-offset:3px;
+  text-decoration-thickness:1px;text-decoration-color:var(--line);
+  transition:text-decoration-color .15s}
+.block a:not(.btn):hover,.page-head a:not(.btn):hover{text-decoration-color:var(--ox)}
+
+/* --- buttons: give the press a physical response ------------------------- */
+.btn{transform:translateZ(0)}
+.btn:active{transform:translateY(1px)}
+
+/* --- footer structure ----------------------------------------------------- */
+.f-col h2{padding-bottom:14px;border-bottom:1px solid var(--dark-line);margin-bottom:18px}
+
+/* --- one orchestrated arrival, on the hero only --------------------------
+   Not a scroll reveal on every section — that uniform reflex is the tell.
+   The keyframes end at the element's natural state, so if animation never
+   runs the content is simply there. */
+@keyframes kkq-rise{from{opacity:0;transform:translateY(9px)}}
+.hero h1,.hero .lede,.hero .hero-btns,
+.hero-v h1,.hero-v .lede,.hero-v .hero-btns{
+  animation:kkq-rise .62s cubic-bezier(.22,1,.36,1) both}
+.hero .lede,.hero-v .lede{animation-delay:.07s}
+.hero .hero-btns,.hero-v .hero-btns{animation-delay:.14s}
+
+@media(prefers-reduced-motion:reduce){
+  .hero h1,.hero .lede,.hero .hero-btns,
+  .hero-v h1,.hero-v .lede,.hero-v .hero-btns{animation:none}
+  .st,#practices .hero-side{transition:none}
 }
