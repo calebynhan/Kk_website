@@ -130,7 +130,7 @@
 <nav><div class="nav-in">
   <a href="/" class="brand"><img src="/logoBlack.svg" alt="KKQ Consulting" width="65" height="28"></a>
   <div class="nav-links">
-    <a href="/#how">How it works</a><a href="/#stop">Where we stop</a><a href="/about">About</a>
+    <a href="/#how">How it works</a><a href="/about">About</a>
   </div>
   <div class="nav-cta"><a href="/contact" class="btn btn-p">Contact</a></div>
 </div></nav>
@@ -149,13 +149,6 @@
     <div class="field"><label for="name">Your name</label><input id="name" name="name" type="text" autocomplete="name"></div>
     <div class="field"><label for="company">Company</label><input id="company" name="company" type="text" autocomplete="organization"></div>
     <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email"></div>
-    <div class="field"><label for="tms">What you run</label>
-      <select id="tms" name="tms">
-        <option value="">Select</option>
-        <option>McLeod</option><option>Turvo</option><option>Revenova</option>
-        <option>Trimble</option><option>Something else</option><option>Not sure</option>
-      </select></div>
-    <div class="field"><label for="loads">Loads a month</label><input id="loads" name="loads" type="text" inputmode="numeric"></div>
     <div class="field"><label for="note">Anything else</label><textarea id="note" name="note"></textarea></div>
     <button type="submit" class="btn btn-p btn-lg">Send</button>
     <p class="hint" style="margin-top:14px">This opens your email app with the details filled in. Nothing is stored here.</p>
@@ -184,8 +177,6 @@ document.getElementById('f').addEventListener('submit', function (e) {
     'Name: ' + v('name'),
     'Company: ' + v('company'),
     'Email: ' + v('email'),
-    'Load system: ' + v('tms'),
-    'Loads a month: ' + v('loads'),
     '',
     v('note')
   ].join('\n');
@@ -208,23 +199,13 @@ document.getElementById('f').addEventListener('submit', function (e) {
       <ul>
         <li><a href="/">Home</a></li>
         <li><a href="/#how">How it works</a></li>
-        <li><a href="/#stop">Where we stop</a></li>
         <li><a href="/about">About</a></li>
-        <li><a href="https://freight.kkqconsulting.com/">Freight automation</a></li>
-        <li><a href="https://pe.kkqconsulting.com/">Private equity automation</a></li>
+        <li><a href="https://freight.kkqconsulting.com/">Freight</a></li>
+        <li><a href="https://pe.kkqconsulting.com/">Private equity</a></li>
+        <li><a href="https://ngo.kkqconsulting.com/">Nonprofits</a></li>
         <li><a href="/contact">Contact</a></li>
       </ul>
     </nav>
-
-    <div class="f-col">
-      <h2>The engagement</h2>
-      <ol class="f-steps">
-        <li>Learning your company</li>
-        <li>A working demo</li>
-        <li>Building it out</li>
-        <li>Handover and training</li>
-      </ol>
-    </div>
 
     <div class="f-col">
       <h2>Get in touch</h2>
