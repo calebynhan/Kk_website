@@ -307,3 +307,11 @@ body:has(.hero-v video) .vtoggle:hover{background:rgba(9,11,15,.72)}
   .st p,.hero-side p{font-size:16px}
   .block p{font-size:17px}
 }
+
+/* Three practices on the homepage hub: stack until there is room for all three
+   side by side, so the last card never orphans onto a row of its own. */
+#practices .pair{grid-template-columns:1fr}
+#practices .hero-side{max-width:none}
+@media(min-width:900px){
+  #practices .pair{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
