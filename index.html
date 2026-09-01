@@ -272,6 +272,10 @@
   } else {
     window.addEventListener('load', start, { once: true });
   }
+
+  btn.addEventListener('click', function () {
+    if (v.paused) { start(); } else { v.pause(); }
+  });
 })();
 </script>
 </body>
