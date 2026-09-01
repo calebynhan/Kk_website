@@ -413,3 +413,8 @@ body:has(.hero-v video) .vtoggle:hover{background:rgba(9,11,15,.72)}
   .steps-h .st h3{font-size:clamp(19px,1.6vw,22px)}
   .steps-h .st p{max-width:none}
 }
+
+/* --- the team section reads as a centred statement, not a left column ----- */
+#who .head{text-align:center;margin-inline:auto}
+#who .head .lede{margin-inline:auto}
+#who .hero-btns{justify-content:center}
