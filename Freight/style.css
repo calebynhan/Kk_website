@@ -276,3 +276,29 @@ form{max-width:560px}
   html{scroll-behavior:auto}
   *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
 }
+
+/* --- horizontal variant of the sequence ----------------------------------
+   Four stages side by side. Each column stacks ordinal / title / detail, with
+   a hairline between columns so the order still reads left to right. */
+@media(min-width:900px){
+  /* Each column is its own grid, so ordinal / title / detail would sit at
+     three different heights per column. Subgrid pulls all four columns onto
+     the same three rows so the row rules read straight across. */
+  .steps-h{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+    grid-template-rows:auto auto auto;
+    border-top:2px solid var(--ink)}
+  .steps-h .st{grid-row:span 3;grid-template-rows:subgrid;
+    grid-template-columns:1fr;gap:10px;align-items:start;
+    border-bottom:none;border-left:1px solid var(--line);
+    padding:clamp(26px,2.4vw,34px) clamp(18px,1.8vw,30px) 0;
+    margin-inline:0}
+  @supports not (grid-template-rows:subgrid){
+    /* fallback: fix the first two rows so the third still starts level */
+    .steps-h .st{grid-template-rows:1.9em 2.6em auto}
+  }
+  .steps-h .st:first-child{border-left:none;padding-left:0}
+  .steps-h .st:last-child{padding-right:0}
+  .steps-h .st:hover{background-color:transparent}
+  .steps-h .st h3{font-size:clamp(19px,1.6vw,22px)}
+  .steps-h .st p{max-width:none}
+}
