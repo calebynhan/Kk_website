@@ -243,7 +243,8 @@ footer .brand img{height:38px}
 /* 4:5 portrait. Only one founder photo exists so far; capping the width keeps the
    row even rather than leaving a full-column gap next to it. */
 .bio-portrait{display:block;width:100%;max-width:196px;aspect-ratio:4/5;
-  object-fit:cover;margin-bottom:18px}
+  object-fit:cover;margin:0 0 18px}
+.bio .nm+.bio-portrait{margin-top:4px}
 .bio .nm{font:400 24px/1.2 var(--serif);margin-bottom:14px}
 .bio p{font-size:15px;color:var(--ink-3);line-height:1.7;max-width:50ch}
 .bio .meta{margin-top:18px;font:400 13.5px/1.6 var(--sans);color:var(--ink-4)}
@@ -385,4 +386,30 @@ body:has(.hero-v video) .vtoggle:hover{background:rgba(9,11,15,.72)}
   .hero h1,.hero .lede,.hero .hero-btns,
   .hero-v h1,.hero-v .lede,.hero-v .hero-btns{animation:none}
   .st,#practices .hero-side{transition:none}
+}
+
+/* --- horizontal variant of the sequence ----------------------------------
+   Four stages side by side. Each column stacks ordinal / title / detail, with
+   a hairline between columns so the order still reads left to right. */
+@media(min-width:900px){
+  /* Each column is its own grid, so ordinal / title / detail would sit at
+     three different heights per column. Subgrid pulls all four columns onto
+     the same three rows so the row rules read straight across. */
+  .steps-h{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+    grid-template-rows:auto auto auto;
+    border-top:2px solid var(--ink)}
+  .steps-h .st{grid-row:span 3;grid-template-rows:subgrid;
+    grid-template-columns:1fr;gap:10px;align-items:start;
+    border-bottom:none;border-left:1px solid var(--line);
+    padding:clamp(26px,2.4vw,34px) clamp(18px,1.8vw,30px) 0;
+    margin-inline:0}
+  @supports not (grid-template-rows:subgrid){
+    /* fallback: fix the first two rows so the third still starts level */
+    .steps-h .st{grid-template-rows:1.9em 2.6em auto}
+  }
+  .steps-h .st:first-child{border-left:none;padding-left:0}
+  .steps-h .st:last-child{padding-right:0}
+  .steps-h .st:hover{background-color:transparent}
+  .steps-h .st h3{font-size:clamp(19px,1.6vw,22px)}
+  .steps-h .st p{max-width:none}
 }
