@@ -133,13 +133,14 @@ body>nav{position:sticky;top:0;z-index:var(--z-sticky);background:rgba(255,255,2
 
 /* play/pause */
 .vtoggle{position:absolute;right:var(--gutter);bottom:clamp(18px,3vw,28px);z-index:2;
-  width:42px;height:42px;display:grid;place-items:center;cursor:pointer;
-  color:#fff;background:rgba(9,11,15,.42);border:1px solid rgba(255,255,255,.34);
+  width:46px;height:46px;display:grid;place-items:center;cursor:pointer;
+  color:#fff;background:rgba(9,11,15,.62);border:1px solid rgba(255,255,255,.55);
+  box-shadow:0 1px 10px rgba(6,8,12,.35);
   border-radius:50%;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
   transition:background .18s cubic-bezier(.22,1,.36,1),border-color .18s,transform .18s}
 .vtoggle:hover{background:rgba(9,11,15,.66);border-color:rgba(255,255,255,.7)}
 .vtoggle:active{transform:scale(.94)}
-.vtoggle svg{width:14px;height:14px;fill:currentColor;display:block}
+.vtoggle svg{width:15px;height:15px;fill:currentColor;display:block}
 /* optical centring: the play triangle reads left-heavy inside a circle */
 .vtoggle .i-play{display:none;margin-left:2px}
 .vtoggle[data-paused="true"] .i-play{display:block}
@@ -298,8 +299,8 @@ form{max-width:560px}
    :has() scopes this to the one page that actually plays video. */
 body:has(.hero-v video) > nav{backdrop-filter:none;-webkit-backdrop-filter:none;background:#fff}
 body:has(.hero-v video) .vtoggle{backdrop-filter:none;-webkit-backdrop-filter:none;
-  background:rgba(9,11,15,.55)}
-body:has(.hero-v video) .vtoggle:hover{background:rgba(9,11,15,.72)}
+  background:rgba(9,11,15,.72)}
+body:has(.hero-v video) .vtoggle:hover{background:rgba(9,11,15,.86)}
 
 
 /* Three practices on the homepage hub: stack until there is room for all three
@@ -415,6 +416,8 @@ body:has(.hero-v video) .vtoggle:hover{background:rgba(9,11,15,.72)}
 }
 
 /* --- the team section reads as a centred statement, not a left column ----- */
-#who .head{text-align:center;margin-inline:auto}
+/* wider measure than the left-aligned sections: a centred statement wants
+   two balanced lines, not three narrow ones */
+#who .head{text-align:center;margin-inline:auto;max-width:36rem}
 #who .head .lede{margin-inline:auto}
 #who .hero-btns{justify-content:center}
